@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+.container{
+    display: grid;
+    grid-template-rows: 10vh 15vh minmax(75vh,min-content);
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navbar{
+    background-color: lightsteelblue;
+    display: grid;
+    grid-template-columns: min-content 1fr max-content;
+}
+.transactionForm{
+    background-color: lightsalmon;
+}
+.transactionList{
+    background-color: lightskyblue;
+}
+.logo h2{
+    padding: 0px 20px;
+}
+.transactionListItem{
+    display: grid;
+    grid-template-columns: min-content 1fr max-content max-content min-content;
+    column-gap: 20px;
+
+}
+.listItem{
+    padding: 20px;
+}

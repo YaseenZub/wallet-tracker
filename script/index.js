@@ -5,6 +5,7 @@ var signInForm=document.querySelector(".signInForm");
 var signUpForm=document.querySelector(".signUpForm");
 var googleBtn=document.querySelector("#googleBtn");
 
+
 var signInFormSubmission = async (e) =>{
     e.preventDefault();
     try{
@@ -15,7 +16,9 @@ var signInFormSubmission = async (e) =>{
             var {user:{uid}} = await auth.signInWithEmailAndPassword(email,password);
             var userInfo = await firestore.collection('users').doc(uid).get();
             console.log(userInfo.data());
+            location.assign(`./dashboard.html#${uid}`)
         }
+       
     }
     catch(error){
         console.log(error);
@@ -39,6 +42,7 @@ var signUpFormSubmission = async (e) =>{
             }
             await firestore.collection("users").doc(uid).set(userInfo);
             console.log(userInfo);
+            location.assign(`./dashboard.html#${uid}`)
         }
     } catch (error) {
         console.log(error);
@@ -48,7 +52,7 @@ var googleSignIn = async ()=>{
     try {
         var googleProvider= new firebase.auth.GoogleAuthProvider();
         var {additionalUserInfo:{isNewUser},user:{displayName,uid,email}}= await firebase.auth().signInWithPopup(googleProvider);
-        if(isNewUser){
+        if(isNewUser){  
         var userInfo ={
             fullName: displayName,
             email,
@@ -56,9 +60,10 @@ var googleSignIn = async ()=>{
         }
         await firestore.collection("users").doc(uid).set(userInfo);
         console.log("done");
-
+        location.assign(`./dashboard.html#${uid}`)
     }else{
         console.log("Welcome Back");
+        location.assign(`./dashboard.html#${uid}`)
     }
         
     } catch (error) {

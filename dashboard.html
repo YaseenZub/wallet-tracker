@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo flex"><h2>Logo</h1></div>
+            <div class="amount flex"><h1>Amount</h2></div>
+            <div class="name flex"><button class="signoutBtn">SignOut</button><h2>Name</h3></div>
+        </div>
+        <div class="transactionForm flex">
+                <form>
+                    <input type="text" placeholder="title" class="title">
+                    <input type="text" placeholder="cost" class="cost">
+                    <select class="transactionType">
+                        <option value="expense" selected="selected">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                    <input class="transactionAt" type="date">
+                    <button type="submit">Add</button>
+                </form>
+        </div>
+        <div class="transactionsList">
+            
+        </div>
+    </div>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+    <script src="./script/firebase.js"></script>
+    <script src="./script/dashboard.js"></script>
+</body>
+</html>
