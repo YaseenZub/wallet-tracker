@@ -6,6 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>TRANSACTIOn</h1>
+    <div class="container">
+        <div class="transactionForm flex">
+            <form class="transactionForm">
+                <input type="text" placeholder="title" class="title">
+                <input type="text" placeholder="cost" class="cost">
+                <select class="transactionType">
+                    <option value="expense" selected="selected">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <input class="transactionAt" type="date">
+                <button type="submit">Edit</button>
+                <button id="deleteBtn">Delete</button>
+            </form>
+            
+        </div>
+    </div>
+
+
+
+    
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-analytics.js"></script>
+
+    <script src="./script/firebase.js"></script>
+    <script src="./script/transaction.js"></script>
 </body>
 </html>

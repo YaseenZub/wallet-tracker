@@ -35,3 +35,10 @@
 .listItem{
     padding: 20px;
 }
+.income{
+    color: green;
+}
+
+.expense{
+    color: red;
+}

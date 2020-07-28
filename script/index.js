@@ -71,6 +71,16 @@ var googleSignIn = async ()=>{
     }
 }
 
+auth.onAuthStateChanged(async(user)=>{
+    if(user){
+        uid=user.uid;
+        location.assign(`./dashboard.html#${uid}`);
+    }
+    else{
+        location.assign('./index.html');
+    }
+});
+
 signInForm.addEventListener("submit",(e)=>signInFormSubmission(e));
 signUpForm.addEventListener("submit",(e)=>signUpFormSubmission(e));
 googleBtn.addEventListener("click",googleSignIn);

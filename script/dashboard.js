@@ -1,8 +1,6 @@
-
 var uid = null;
 var firestore=firebase.firestore();
 var auth=firebase.auth();
-console.log(firestore);
 var nameDiv=document.querySelector('.name h2');
 var signOut=document.querySelector('.signoutBtn');
 var transactionForm=document.querySelector('.transactionForm');
@@ -30,7 +28,7 @@ var transactionFormSubmission = async   (e)=>{
             if(title && cost && transactionType && transactionAt){
                 var transactionObject={
                     title,
-                    cost,
+                    cost: parseInt(cost),
                     transactionType,
                     transactionAt: new Date(transactionAt),
                     transactionBy: uid
@@ -53,12 +51,28 @@ var fetchTransactions=async (uid)=>{
     return transactions;    
 }
 
+var finalCostCalculation = (transArr)=>{
+    var totalAmount=0;
+    var amountHeading=document.querySelector('#amountHeading');
+    transArr.forEach((transaction)=>{
+        var {cost,transactionType}=transaction;
+        if(transactionType==="income"){
+            totalAmount=totalAmount+cost;
+        }
+        else{
+            totalAmount=totalAmount-cost;
+        }
+        amountHeading.innerHTML=`${totalAmount} Rs`;
+   })
+    
+}
+
 var renderTransactions= (transactionArr)=>{
     transactionList.innerHTML="";
     transactionArr.forEach((transaction,index)=>{
-        var {title,cost,transactionAt,transactionId}=transaction;
+        var {title,cost,transactionAt,transactionId,transactionType}=transaction;
         transactionList.insertAdjacentHTML('beforeend',`
-        <div class="transactionListItem">
+        <div class="transactionListItem ${transactionType==="income" ? "income" : "expense"}">
         <div class="renderIndex listItem">
             <h3>${++index}</h3>
         </div>
@@ -77,6 +91,8 @@ var renderTransactions= (transactionArr)=>{
     </div>`
     )
     })
+    finalCostCalculation(transactionArr);
+
 }
 
 
